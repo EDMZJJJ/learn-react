@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Card></Card>
-      <button onClick={() => window.onShow()}>提示</button>
+      <button onClick={() => window.onShow()}>确认</button>
     </>
   )
 }

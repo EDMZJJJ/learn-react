@@ -37,7 +37,7 @@ const App: React.FC = () =>  {
         <AsyncComponent />
       </Suspense>
 
-      <Suspense fallback={<Skeleton></Skeleton>}>
+      <Suspense fallback={skeleton}>
         <NewCard></NewCard>
       </Suspense>
     </>

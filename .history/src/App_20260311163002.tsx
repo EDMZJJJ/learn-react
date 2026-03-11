@@ -191,9 +191,6 @@ const App: React.FC = () =>  {
       <InputComponent placeholder="请输入内容" />
       <GlobalStyle />
       <AnimatedDiv />
-
-      {/* tailwindcss */}
-      <section className="text-center bg-red-500 text-white p-4 ">Tailwind CSS</section>
     </>
   )
 }

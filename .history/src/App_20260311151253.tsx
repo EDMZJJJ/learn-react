@@ -7,7 +7,6 @@ import NewCard from './components/NewCard'
 import { Skeleton } from "./components/Skeleton"
 import { Modal } from "./components/Modal"
 import styles from './app.module.scss'
-import styled,{createGlobalStyle,keyframes} from 'styled-components'; //css-in-js 库
 // eg:权限判断
 const Role = {
   ADMIN: 'admin',
@@ -81,59 +80,6 @@ const Button = ({ trackEvent }:{trackEvent: (eventType: string, data: any) => vo
 // 使用HOC高阶组件
 const TrackButton = withTracking(Button, 'button')
 
-//CSS-in-JS
-const StyledButton = styled.button<{primary?: boolean}>`
-  background-color: ${props => props.primary ? 'blue' : 'lightgray'};
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-//圆角蓝色按钮,通过继承StyledButton的样式来创建一个新的组件
-const BlueButton = styled(StyledButton)`
-   background-color: blue;
-   border-radius: 20px;
-`;
-//失败按钮
-const FailButton = styled(StyledButton)`
-   background-color: red;
-`;
-interface DivComponentProps {
-  placeholder: string;
-}
-const InputComponent = styled.input.attrs<DivComponentProps>(props => ({
-  type: 'text',
-  placeholder: props.placeholder,
-}))`
-   padding: 10px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-`
-// createGlobalStyle 来创建全局样式
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-  }
-`
-// 通过 keyframes 来创建动画
-const move=keyframes`
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100px);
-  }
-`
-const AnimatedDiv = styled.div`
-   width: 100px;
-   height: 100px;
-   background-color: green;
-   animation: ${move} 2s linear infinite;
-`
-
 const App: React.FC = () =>  {
   //所有hook都必须在组件的最顶层调用，不能在循环或条件语句中调用它。
   const fn = (params:string)=>{
@@ -180,23 +126,9 @@ const App: React.FC = () =>  {
       {/* createPortal:是个api,将一个组件渲染到DOM的任意位置 */}
       {createPortal(<div>zsz</div>, document.body)}
       <Modal></Modal>
-      <div className={styles['app']}>
-          <button className={`${styles['button-default']} ${styles['button-blue']}`}>CSS MODULES</button>
-      </div>
-
-      {/* CSS-IN-JS */}
-      <StyledButton primary>Styled Button</StyledButton>  
-      <BlueButton>Blue Button</BlueButton>
-      <FailButton>Fail Button</FailButton>
-      <InputComponent placeholder="请输入内容" />
-      <GlobalStyle />
-      <AnimatedDiv />
-
-      {/* tailwindcss */}
-      <section className="text-center bg-red-500 text-white p-4 ">Tailwind CSS</section>
+      <button className={styles.button-blue}>CSS MODULES</button>
     </>
   )
 }
-
 
 export default App

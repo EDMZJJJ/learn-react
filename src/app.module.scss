@@ -1,0 +1,14 @@
+.app {
+  background: #eeeeee;
+  :global(.button) {
+    // :global() 让这个样式全局生效
+    background: white;
+    width: 100px;
+    height: 100px;
+    color: #333;
+  }
+  .button-blue {
+    background: blue;
+    color: #fff;
+  }
+}

@@ -193,7 +193,7 @@ const App: React.FC = () =>  {
       <AnimatedDiv />
 
       {/* tailwindcss */}
-      <section className="text-center bg-red-500 text-white p-4 ">Tailwind CSS</section>
+      <section className="text-center bg-red-100">Tailwind CSS</section>
     </>
   )
 }

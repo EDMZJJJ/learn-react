@@ -7,7 +7,7 @@ import NewCard from './components/NewCard'
 import { Skeleton } from "./components/Skeleton"
 import { Modal } from "./components/Modal"
 import styles from './app.module.scss'
-import styled,{createGlobalStyle,keyframes} from 'styled-components'; //css-in-js 库
+import styled,{createGlobalStyle} from 'styled-components'; //css-in-js 库
 // eg:权限判断
 const Role = {
   ADMIN: 'admin',
@@ -118,22 +118,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Arial', sans-serif;
   }
 `
-// 通过 keyframes 来创建动画
-const move=keyframes`
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100px);
-  }
-`
-const AnimatedDiv = styled.div`
-   width: 100px;
-   height: 100px;
-   background-color: green;
-   animation: ${move} 2s linear infinite;
-`
-
 const App: React.FC = () =>  {
   //所有hook都必须在组件的最顶层调用，不能在循环或条件语句中调用它。
   const fn = (params:string)=>{
@@ -190,10 +174,6 @@ const App: React.FC = () =>  {
       <FailButton>Fail Button</FailButton>
       <InputComponent placeholder="请输入内容" />
       <GlobalStyle />
-      <AnimatedDiv />
-
-      {/* tailwindcss */}
-      <section className="text-center bg-red-500 text-white p-4 ">Tailwind CSS</section>
     </>
   )
 }

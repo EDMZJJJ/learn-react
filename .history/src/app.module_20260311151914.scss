@@ -1,0 +1,13 @@
+.app {
+  background: #eeeeee;
+  :global(.button) {
+    background: white;
+    width: 100px;
+    height: 100px;
+    color: #333;
+  }
+  .button-blue {
+    background: blue;
+    color: #fff;
+  }
+}

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import tailwindcss from '@tailwindcss/vite'
+
 // https://vite.dev/config/
 export default defineConfig({
   css: {
@@ -17,5 +17,5 @@ export default defineConfig({
       //   generateScopedName: '[local]--[hash:base64:4]' // 自定义分隔符
     },
   },
-  plugins: [react(),tailwindcss()],
+  plugins: [react()],
 })

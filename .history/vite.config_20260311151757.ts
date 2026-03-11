@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import tailwindcss from '@tailwindcss/vite'
+
 // https://vite.dev/config/
 export default defineConfig({
   css: {
     modules: {
-      localsConvention: 'dashes', // 修改css modules的类名规则 可以改成驼峰命名 或者 xxx-xxx命名等
+      localsConvention: [camelCase|dashes], // 修改css modules的类名规则 可以改成驼峰命名 或者 xxx-xxx命名等
       generateScopedName: '[name]__[local]___[hash:base64:5]', // 修改css modules的类名规则
 
       // generateScopedName: '[local]_[hash:base64:5]' // 只保留类名和哈希值
@@ -17,5 +17,5 @@ export default defineConfig({
       //   generateScopedName: '[local]--[hash:base64:4]' // 自定义分隔符
     },
   },
-  plugins: [react(),tailwindcss()],
+  plugins: [react()],
 })

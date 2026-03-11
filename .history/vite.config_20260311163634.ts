@@ -17,5 +17,5 @@ export default defineConfig({
       //   generateScopedName: '[local]--[hash:base64:4]' // 自定义分隔符
     },
   },
-  plugins: [react(),tailwindcss()],
+  plugins: [react()],
 })

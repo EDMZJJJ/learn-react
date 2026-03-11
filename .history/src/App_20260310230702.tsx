@@ -3,8 +3,8 @@ import Test from "./components/Test"
 
 function App() {
   //所有hook都必须在组件的最顶层调用，不能在循环或条件语句中调用它。
-  const fn = (params:string)=>{
-    console.log('子组件触发了 父组件的事件',params)
+  const fn = ()=>{
+    return ''
   }
   return (
     <>

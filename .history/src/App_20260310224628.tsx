@@ -3,16 +3,13 @@ import Test from "./components/Test"
 
 function App() {
   //所有hook都必须在组件的最顶层调用，不能在循环或条件语句中调用它。
-  const fn = (params:string)=>{
-    console.log('子组件触发了 父组件的事件',params)
-  }
+
   return (
     <>
       <Card></Card>            
-      {/* 全局组件 */}
-      <button onClick={() => window.onShow()}>提示</button>     
+      <button onClick={() => window.onShow()}>提示</button>     //全局组件
       
-      {/* 组件通信 */}
+      //组件通信
       <Test 
         title={'测试'}
         id={1}
@@ -21,11 +18,8 @@ function App() {
         cb={(a: number, b: number) => a + b}
         empty={null}
         element={<div>测试</div>}
-        isGirl={false}
-        callback={fn}
-      >
-        <div>children</div>
-      </Test>
+        isGirl={false}>
+        </Test>
     </>
   )
 }

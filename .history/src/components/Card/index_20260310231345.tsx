@@ -3,9 +3,9 @@ import './index.css'
 export default function Card() {
   //接受参数
     window.addEventListener('on-card', (e) => {
-        console.log(e.params, '兄弟触发了')
+        console.log(e.params, '触发了')
     })
-
+    
     return (
         <div className='card'>
             <header>

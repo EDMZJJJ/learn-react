@@ -46,7 +46,7 @@ const trackService={
     navigator.sendBeacon('/track', JSON.stringify(eventData))
   }
 }
-const withTracking=(Component:React.ComponentType<any>, trackType:string)=>{
+const withTracking=(Component:React.FC, trackType:string)=>{
   return (props:any)=>{
     // 页面挂载时发送事件
     useEffect(()=>{
@@ -62,18 +62,18 @@ const withTracking=(Component:React.ComponentType<any>, trackType:string)=>{
     return <Component {...props} trackEvent={trackEvent} />
   }
 } 
-const Button = ({ trackEvent }:{trackEvent: (eventType: string, data: any) => void  }) => {
+const Button = ({ trackEvent }) => {
   // 点击事件
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     trackEvent(e.type, {
       name: e.type,
-      type: e.type, 
+      type: e.type,
       clientX: e.clientX,
       clientY: e.clientY,
     })
   }
 
-  return <button   onClick={handleClick}>我是按钮埋点</button>
+  return <button   onClick={handleClick}>我是按钮</button>
 }
 // 使用HOC高阶组件
 const TrackButton = withTracking(Button, 'button')

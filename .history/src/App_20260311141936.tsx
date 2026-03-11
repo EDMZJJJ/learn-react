@@ -46,34 +46,36 @@ const trackService={
     navigator.sendBeacon('/track', JSON.stringify(eventData))
   }
 }
-const withTracking=(Component:React.ComponentType<any>, trackType:string)=>{
-  return (props:any)=>{
-    // 页面挂载时发送事件
-    useEffect(()=>{
-      trackService.sendEvent(trackType+'_mount') //组件挂载时发送事件
-      return ()=>{
-        trackService.sendEvent(trackType+'_unmount') //组件卸载时发送事件
-      }
-    },[])
-    //处理事件
+function withTracking<P>(Component: React.ComponentType<P & { trackEvent: (eventType: string, data: any) => void }>, trackType: string) {
+  return (props: P) => {
+    useEffect(() => {
+      trackService.sendEvent(trackType + '_mount');
+      return () => {
+        trackService.sendEvent(trackType + '_unmount');
+      };
+    }, []);
     const trackEvent = (eventType: string, data: any) => {
-      trackService.sendEvent(`${trackType}-${eventType}`, data)
-    }
-    return <Component {...props} trackEvent={trackEvent} />
-  }
-} 
-const Button = ({ trackEvent }:{trackEvent: (eventType: string, data: any) => void  }) => {
+      trackService.sendEvent(`${trackType}-${eventType}`, data);
+    };
+    return <Component {...props} trackEvent={trackEvent} />;
+  };
+}
+type ButtonProps = {
+  trackEvent: (eventType: string, data: any) => void;
+};
+
+const Button: React.FC<ButtonProps> = ({ trackEvent }) => {
   // 点击事件
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     trackEvent(e.type, {
       name: e.type,
-      type: e.type, 
+      type: e.type,
       clientX: e.clientX,
       clientY: e.clientY,
     })
   }
 
-  return <button   onClick={handleClick}>我是按钮埋点</button>
+  return <button onClick={handleClick}>我是按钮</button>
 }
 // 使用HOC高阶组件
 const TrackButton = withTracking(Button, 'button')

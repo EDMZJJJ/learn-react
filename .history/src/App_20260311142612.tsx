@@ -73,7 +73,7 @@ const Button = ({ trackEvent }:{trackEvent: (eventType: string, data: any) => vo
     })
   }
 
-  return <button   onClick={handleClick}>我是按钮埋点</button>
+  return <button   onClick={handleClick}>我是按钮</button>
 }
 // 使用HOC高阶组件
 const TrackButton = withTracking(Button, 'button')

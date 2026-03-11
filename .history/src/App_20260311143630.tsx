@@ -1,11 +1,10 @@
-import React, { lazy, Suspense, useEffect } from "react"
-import { createPortal } from "react-dom"
+import React, { lazy, Suspense, use, useEffect } from "react"
 import Card from "./components/Card"
 import Test from "./components/Test"
 const AsyncComponent=lazy(()=>import('./components/Async')) // 使用lazy进行异步加载组件
 import NewCard from './components/NewCard'
 import { Skeleton } from "./components/Skeleton"
-import { Modal } from "./components/Modal"
+
 // eg:权限判断
 const Role = {
   ADMIN: 'admin',
@@ -84,7 +83,6 @@ const App: React.FC = () =>  {
   const fn = (params:string)=>{
     console.log('子组件触发了 父组件的事件',params)
   }
-
   return (
     <>
       <Card></Card>            
@@ -122,9 +120,7 @@ const App: React.FC = () =>  {
 
       <TrackButton />
 
-      {/* createPortal:是个api,将一个组件渲染到DOM的任意位置 */}
-      {createPortal(<div>zsz</div>, document.body)}
-      <Modal></Modal>
+      {/* createPortal:是个api */}
     </>
   )
 }

@@ -124,7 +124,6 @@ const App: React.FC = () =>  {
 
       {/* createPortal:是个api,将一个组件渲染到DOM的任意位置 */}
       {createPortal(<div>zsz</div>, document.body)}
-      <Modal></Modal>
     </>
   )
 }
